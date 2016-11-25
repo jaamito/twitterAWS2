@@ -40,7 +40,7 @@ CREATE TABLE publicacion (
 	'creadorID' INT(11) NOT NULL DEFAULT '',
 	'fecha' CHAR(20) NOT NULL DEFAULT '',
 	PRIMARY KEY ('ID'),
-	FOREING KEY('creadorID') REFERENCES usuarios ('ID')
+	FOREIGN KEY ('creadorID') REFERENCES usuarios ('ID')
 );
 DROP TABLE IF EXISTS comentarios;
 CREATE TABLE comentarios (
