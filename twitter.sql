@@ -18,6 +18,7 @@ INSERT INTO `usuarios` VALUES (1,'root','root','root@twitteraws2.com',666666666,
 INSERT INTO `usuarios` VALUES (2,'ian','lopez zamora','ian@twitteraws2.com',666666666,'ian','20/05/94','M');
 INSERT INTO `usuarios` VALUES (3,'josemi','tudela perez','josemi@twitteraws2.com',666666666,'josemi','06/09/69','M');
 INSERT INTO `usuarios` VALUES (4,'adrian','morales sanagustin','adrian@twitteraws2.com',666666666,'adrian','13/11/95','M');
+COMMIT;
 
 CREATE TABLE publicacion (
 	'ID' int(11) NOT NULL AUTO_INCREMENT,
@@ -27,18 +28,17 @@ CREATE TABLE publicacion (
 	'fecha' CHAR(20) NOT NULL DEFAULT '',
 	PRIMARY KEY ('ID')
 );
-COMMIT;
-DROP TABLE IF EXISTS usuarios;
-CREATE TABLE usuarios (
+
+DROP TABLE IF EXISTS mensajes;
+CREATE TABLE mensajes (
   `ID` INT(10) NOT NULL,
-  `Emisor` CHAR(35) NOT NULL DEFAULT '',
-  `Remitente` CHAR(35) NOT NULL DEFAULT '',
+  `EmisorId` INT(10) NOT NULL DEFAULT '',
+  `RemitenteId` INT(10) NOT NULL DEFAULT '',
   `Fecha` CHAR(35) NOT NULL DEFAULT '',
-  `Mensaje` INT(10) NOT NULL,
+  `Mensaje` CHAR(300) NOT NULL DEFAULT '',
   PRIMARY KEY (`ID`)
 );
-INSERT INTO `usuarios` VALUES (1,'root','root','root@twitteraws2.com',666666666,'root','00/00/00','M');
-INSERT INTO `usuarios` VALUES (2,'ian','lopez zamora','ian@twitteraws2.com',666666666,'ian','20/05/94','M');
-INSERT INTO `usuarios` VALUES (3,'josemi','tudela perez','josemi@twitteraws2.com',666666666,'josemi','06/09/69','M');
-INSERT INTO `usuarios` VALUES (4,'adrian','morales sanagustin','adrian@twitteraws2.com',666666666,'adrian','13/11/95','M');
+INSERT INTO `mensajes` VALUES (1,'1','2','25/11/16','Hola guapo');
+INSERT INTO `mensajes` VALUES (2,'1','3','25/11/16','Hola gañan');
+INSERT INTO `mensajes` VALUES (3,'1','4','25/11/16','Hola pichita');
 COMMIT;
