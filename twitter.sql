@@ -41,12 +41,14 @@ CREATE TABLE comentarios (
 
 DROP TABLE IF EXISTS mensajes;
 CREATE TABLE mensajes (
-  `ID` INT(10) NOT NULL,
-  `EmisorId` INT(10) NOT NULL DEFAULT '',
-  `RemitenteId` INT(10) NOT NULL DEFAULT '',
-  `Fecha` CHAR(35) NOT NULL DEFAULT '',
+  `ID` INT(11) NOT NULL,
+  `emisorId` INT(11) NOT NULL DEFAULT '',
+  `remitenteId` INT(11) NOT NULL DEFAULT '',
+  `fecha` CHAR(35) NOT NULL DEFAULT '',
   `Mensaje` CHAR(300) NOT NULL DEFAULT '',
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`ID`),
+  FOREIGN KEY(`emisorId`)REFERENCES usuarios(`ID`),
+  FOREIGN KEY(`remitenteId`)REFERENCES usuarios(`ID`)
 );
 INSERT INTO `mensajes` VALUES (1,1,2,'25/11/16','Hola guapo');
 INSERT INTO `mensajes` VALUES (2,1,3,'25/11/16','Hola gañan');
