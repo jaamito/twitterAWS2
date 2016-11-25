@@ -60,6 +60,7 @@ CREATE TABLE hastags (
 	PRIMARY KEY ('id')
 );
 
+DROP TABLE IF EXISTS hastagsComents;
 CREATE TABLE hastagsComents (
 	'id' INT(10) NOT NULL AUTO_INCREMENT,
 	'idhast' INT(20) NOT NULL DEFAULT '',
