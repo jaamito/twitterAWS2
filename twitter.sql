@@ -35,6 +35,6 @@ CREATE TABLE hastags (
 
 CREATE TABLE etiquetas(
 	'idUsuario' CHAR(21) NOT NULL '@',
-	PRIMARY KEY idUsuario
+	PRIMARY KEY ('idUsuario')
 );
 COMMIT;
