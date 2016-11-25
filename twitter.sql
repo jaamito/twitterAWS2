@@ -27,4 +27,14 @@ CREATE TABLE publicacion (
 	'fecha' CHAR(20) NOT NULL DEFAULT '',
 	PRIMARY KEY ('ID')
 );
+
+CREATE TABLE hastags (
+	'nom' CHAR(20) NOT NULL DEFAULT '#',
+	PRIMARY KEY ('nom')
+);
+
+CREATE TABLE etiquetas(
+	'idUsuario' CHAR(21) NOT NULL '@',
+	PRIMARY KEY idUsuario
+);
 COMMIT;
