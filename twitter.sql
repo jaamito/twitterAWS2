@@ -48,9 +48,9 @@ CREATE TABLE mensajes (
   `Mensaje` CHAR(300) NOT NULL DEFAULT '',
   PRIMARY KEY (`ID`)
 );
-INSERT INTO `mensajes` VALUES (1,'1','2','25/11/16','Hola guapo');
-INSERT INTO `mensajes` VALUES (2,'1','3','25/11/16','Hola gañan');
-INSERT INTO `mensajes` VALUES (3,'1','4','25/11/16','Hola pichita');
+INSERT INTO `mensajes` VALUES (1,1,2,'25/11/16','Hola guapo');
+INSERT INTO `mensajes` VALUES (2,1,3,'25/11/16','Hola gañan');
+INSERT INTO `mensajes` VALUES (3,1,4,'25/11/16','Hola pichita');
 
 DROP TABLE IF EXISTS hastags;
 CREATE TABLE hastags (
