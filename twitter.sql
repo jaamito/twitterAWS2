@@ -54,8 +54,18 @@ INSERT INTO `mensajes` VALUES (3,'1','4','25/11/16','Hola pichita');
 
 DROP TABLE IF EXISTS hastags;
 CREATE TABLE hastags (
+	'id'  INT(20) NOT NULL AUTO_INCREMENT,
 	'nom' CHAR(20) NOT NULL DEFAULT '#',
-	PRIMARY KEY ('nom')
+	'idcoment' INT(20) NOT NULL DEFAULT '',
+	PRIMARY KEY ('id')
+);
+
+CREATE TABLE hastagsComents (
+	'id' INT(10) NOT NULL AUTO_INCREMENT,
+	'idhast' INT(20) NOT NULL DEFAULT '',
+	'idcoment' INT(20) NOT NULL DEFAULT '',
+	PRIMARY KEY('id')
+
 );
 
 DROP TABLE IF EXISTS etiquetas;
