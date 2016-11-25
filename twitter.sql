@@ -28,6 +28,15 @@ CREATE TABLE publicacion (
 	'fecha' CHAR(20) NOT NULL DEFAULT '',
 	PRIMARY KEY ('ID')
 );
+DROP TABLE IF EXISTS comentarios;
+CREATE TABLE comentarios (
+
+	`ID` INT(11) NOT NULL AUTO_INCREMENT,
+  	`nombre` CHAR(35) NOT NULL DEFAULT '',
+	'publicacion' CHAR (150) NOT NULL DEFAULT '',
+	'fecha' CHAR (150) NOT NULL DEFAULT '';
+
+);
 
 DROP TABLE IF EXISTS mensajes;
 CREATE TABLE mensajes (
@@ -41,4 +50,14 @@ CREATE TABLE mensajes (
 INSERT INTO `mensajes` VALUES (1,'1','2','25/11/16','Hola guapo');
 INSERT INTO `mensajes` VALUES (2,'1','3','25/11/16','Hola gañan');
 INSERT INTO `mensajes` VALUES (3,'1','4','25/11/16','Hola pichita');
+
+CREATE TABLE hastags (
+	'nom' CHAR(20) NOT NULL DEFAULT '#',
+	PRIMARY KEY ('nom')
+);
+
+CREATE TABLE etiquetas(
+	'idUsuario' CHAR(21) NOT NULL '@',
+	PRIMARY KEY idUsuario
+);
 COMMIT;
