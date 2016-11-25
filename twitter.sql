@@ -34,9 +34,11 @@ CREATE TABLE comentarios (
 
 	`ID` INT(11) NOT NULL AUTO_INCREMENT,
   	`nombre` CHAR(35) NOT NULL DEFAULT '',
+ 	'userID' INT(11) NOT NULL DEFAULT '',
 	'publicacion' CHAR (150) NOT NULL DEFAULT '',
-	'fecha' CHAR (150) NOT NULL DEFAULT '';
-
+	'fecha' CHAR (15) NOT NULL DEFAULT '';
+	PRIMARY KEY ('ID'),
+	FOREIGN KEY ('userID') REFERENCES usuarios('id')
 );
 
 DROP TABLE IF EXISTS mensajes;
@@ -57,7 +59,8 @@ CREATE TABLE hastags (
 	'id'  INT(20) NOT NULL AUTO_INCREMENT,
 	'nom' CHAR(20) NOT NULL DEFAULT '#',
 	'idcoment' INT(20) NOT NULL DEFAULT '',
-	PRIMARY KEY ('id')
+	PRIMARY KEY ('id'),
+	FOREIGN KEY ('idcoment') REFERENCES comentarios('ID')
 );
 
 DROP TABLE IF EXISTS hastagsComents;
@@ -65,6 +68,8 @@ CREATE TABLE hastagsComents (
 	'id' INT(10) NOT NULL AUTO_INCREMENT,
 	'idhast' INT(20) NOT NULL DEFAULT '',
 	'idcoment' INT(20) NOT NULL DEFAULT '',
+	FOREIGN KEY ('idhast') REFERENCES hastags ('id'),
+	FOREIGN KEY ('idcoment') REFERENCES comentarios('id'),
 	PRIMARY KEY('id')
 
 );
@@ -73,5 +78,17 @@ DROP TABLE IF EXISTS etiquetas;
 CREATE TABLE etiquetas(
 	'idUsuario' CHAR(21) NOT NULL '@',
 	PRIMARY KEY ('idUsuario')
+);
+
+
+DROP TABLE IF EXISTS etiquetasComents;
+CREATE TABLE etiquetasComents (
+	'id' INT(10) NOT NULL AUTO_INCREMENT,
+	'ideti' INT(20) NOT NULL DEFAULT '',
+	'idcoment' INT(20) NOT NULL DEFAULT '',
+	FOREIGN KEY ('ideti') REFERENCES etiquetas ('id'),
+	FOREIGN KEY ('idcoment') REFERENCES comentarios('id'),
+	PRIMARY KEY('id')
+
 );
 COMMIT;
