@@ -14,6 +14,18 @@ CREATE TABLE usuarios (
   `sexo` CHAR(1) NOT NULL,
   PRIMARY KEY (`ID`)
 );
+
+CREATE TABLE comentarios (
+
+	`ID` INT(11) NOT NULL AUTO_INCREMENT,
+  	`nombre` CHAR(35) NOT NULL DEFAULT '',
+	'publicacion' CHAR (150) NOT NULL DEFAULT '',
+	'fecha' CHAR (150) NOT NULL DEFAULT '';
+
+
+
+);
+
 INSERT INTO `usuarios` VALUES (1,'root','root','root@twitteraws2.com',666666666,'root','00/00/00','M');
 INSERT INTO `usuarios` VALUES (2,'ian','lopez zamora','ian@twitteraws2.com',666666666,'ian','20/05/94','M');
 INSERT INTO `usuarios` VALUES (3,'josemi','tudela perez','josemi@twitteraws2.com',666666666,'josemi','06/09/69','M');
@@ -27,16 +39,19 @@ CREATE TABLE publicacion (
 	'descripcion' CHAR(300) NOT NULL DEFAULT '',
 	'creadorID' INT(11) NOT NULL DEFAULT '',
 	'fecha' CHAR(20) NOT NULL DEFAULT '',
-	PRIMARY KEY ('ID')
+	PRIMARY KEY ('ID'),
+	FOREIGN KEY ('creadorID') REFERENCES usuarios ('ID')
 );
 DROP TABLE IF EXISTS comentarios;
 CREATE TABLE comentarios (
 
 	`ID` INT(11) NOT NULL AUTO_INCREMENT,
   	`nombre` CHAR(35) NOT NULL DEFAULT '',
+ 	'userID' INT(11) NOT NULL DEFAULT '',
 	'publicacion' CHAR (150) NOT NULL DEFAULT '',
-	'fecha' CHAR (150) NOT NULL DEFAULT '';
-
+	'fecha' CHAR (15) NOT NULL DEFAULT '';
+	PRIMARY KEY ('ID'),
+	FOREIGN KEY ('userID') REFERENCES usuarios('id')
 );
 
 DROP TABLE IF EXISTS mensajes;
@@ -56,13 +71,39 @@ INSERT INTO `mensajes` VALUES (3,1,4,'25/11/16','Hola pichita');
 
 DROP TABLE IF EXISTS hastags;
 CREATE TABLE hastags (
+	'id'  INT(20) NOT NULL AUTO_INCREMENT,
 	'nom' CHAR(20) NOT NULL DEFAULT '#',
-	PRIMARY KEY ('nom')
+	'idcoment' INT(20) NOT NULL DEFAULT '',
+	PRIMARY KEY ('id'),
+	FOREIGN KEY ('idcoment') REFERENCES comentarios('ID')
+);
+
+DROP TABLE IF EXISTS hastagsComents;
+CREATE TABLE hastagsComents (
+	'id' INT(10) NOT NULL AUTO_INCREMENT,
+	'idhast' INT(20) NOT NULL DEFAULT '',
+	'idcoment' INT(20) NOT NULL DEFAULT '',
+	FOREIGN KEY ('idhast') REFERENCES hastags ('id'),
+	FOREIGN KEY ('idcoment') REFERENCES comentarios('id'),
+	PRIMARY KEY('id')
+
 );
 
 DROP TABLE IF EXISTS etiquetas;
 CREATE TABLE etiquetas(
 	'idUsuario' CHAR(21) NOT NULL '@',
 	PRIMARY KEY ('idUsuario')
+);
+
+
+DROP TABLE IF EXISTS etiquetasComents;
+CREATE TABLE etiquetasComents (
+	'id' INT(10) NOT NULL AUTO_INCREMENT,
+	'ideti' INT(20) NOT NULL DEFAULT '',
+	'idcoment' INT(20) NOT NULL DEFAULT '',
+	FOREIGN KEY ('ideti') REFERENCES etiquetas ('id'),
+	FOREIGN KEY ('idcoment') REFERENCES comentarios('id'),
+	PRIMARY KEY('id')
+
 );
 COMMIT;
